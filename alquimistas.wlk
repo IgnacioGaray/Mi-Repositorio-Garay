@@ -1,6 +1,17 @@
+
+
 object alquimista {
   var itemsDeCombate = []
+  var itemsDeRecoleccion = []
+  method esBuenExplorador(){
+  	return self.cantidadDeItemsDeRecoleccion == 3
+  }
   
+  method capacidadOfensiva {}
+  
+  method cantidadDeItemsDeRecoleccion(){
+  	return itemsDeCombate.size()
+  }
   method tieneCriterio() {
     return self.cantidadDeItemsDeCombateEfectivos() >= self.cantidadDeItemsDeCombate() / 2
   }
