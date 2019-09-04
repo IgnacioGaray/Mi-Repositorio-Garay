@@ -3,6 +3,13 @@
 object alquimista {
   var itemsDeCombate = []
   var itemsDeRecoleccion = []
+  method esProfesional(){
+  	return self.calidadPromediosDeSusItems() > 50 and self.esBuenExplorador() and self.todosItemsEfectivos()
+  }
+  method calidadPromedioDeSusItems(){
+    (itemsDeCombate.sum({item=>item.calidadDelItem}))/itemsDeCombate.length()
+    
+    
   method esBuenExplorador(){
   	return self.cantidadDeItemsDeRecoleccion >= 3
   }
@@ -18,18 +25,16 @@ object alquimista {
   method aniadirItemDeRecoleccion(itemr){
   	itemsDeRecoleccion.add(itemr)
   }
-  method capacidadOfensiva() {
-  	return itemsDeCombate.capacidad()
-  }
-  
-  
+ 
   method cantidadDeItemsDeRecoleccion(){
   	return itemsDeCombate.size()
   }
   method tieneCriterio() {
     return self.cantidadDeItemsDeCombateEfectivos() >= self.cantidadDeItemsDeCombate() / 2
   }
-  
+  method todosItemsEfectivos (){
+  	return self.cantidadDeItemsDeCombateEfectivos() == self.cantidadDeItemsDeCombate()
+  	}
   method cantidadDeItemsDeCombate() {
     return itemsDeCombate.size()
   }
